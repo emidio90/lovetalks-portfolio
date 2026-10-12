@@ -1,0 +1,26 @@
+{
+  "name": "lovetalks-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A privacy-conscious conversation-starter prototype with an offline demo and a server-side AI adapter.",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "node --watch --env-file-if-exists=.env server/index.js",
+    "build": "node scripts/build.mjs",
+    "start": "node --env-file-if-exists=.env dist/server/index.js",
+    "test": "node --test tests/*.test.js",
+    "test:browser": "playwright test",
+    "check": "npm run build && npm test && npm run scan",
+    "scan": "node scripts/scan.mjs"
+  },
+  "dependencies": {
+    "openai": "7.32.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.0"
+  }
+}
