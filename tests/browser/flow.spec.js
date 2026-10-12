@@ -30,7 +30,7 @@ test('layout fits screen and essential controls have keyboard focus',async({page
 });
 test('invalid number of interests is recoverable without a request',async({page})=>{
   await ready(page);let count=0;page.on('request',r=>{if(r.url().endsWith('/api/topics'))count++;});
-  for(const checkbox of await page.locator('input[name=interests]:checked').all())await checkbox.uncheck();
+  for(const checkbox of await page.locator('input[name=interests]').all())await checkbox.uncheck();
   await page.locator('#generate-button').click();
   await expect(page.locator('#interests-error')).toBeVisible();expect(count).toBe(0);
   await page.locator('input[value=books]').check();await page.locator('#generate-button').click();
